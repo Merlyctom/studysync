@@ -1,18 +1,22 @@
+// Import Firebase functions
 import { initializeApp } from "firebase/app";
 import { getAuth, GoogleAuthProvider } from "firebase/auth";
 
+// Firebase config from environment variables
 const firebaseConfig = {
-  apiKey: "AIzaSyA2eZJgBlO-xVkG4l2aCIXzJ-8UlW20xis",
-  authDomain: "studysync-7ade6.firebaseapp.com",
-  projectId: "studysync-7ade6",
-  storageBucket: "studysync-7ade6.firebasestorage.app",
-  messagingSenderId: "428808401525",
-  appId: "1:428808401525:web:ec1655edb9e0041b9b3e3c"
+  apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
+  authDomain: process.env.REACT_APP_FIREBASE_AUTH_DOMAIN,
+  projectId: process.env.REACT_APP_FIREBASE_PROJECT_ID,
+  storageBucket: process.env.REACT_APP_FIREBASE_STORAGE_BUCKET,
+  messagingSenderId: process.env.REACT_APP_FIREBASE_MESSAGING_SENDER_ID,
+  appId: process.env.REACT_APP_FIREBASE_APP_ID,
 };
 
+// Initialize Firebase
 const app = initializeApp(firebaseConfig);
-
 const auth = getAuth(app);
 const provider = new GoogleAuthProvider();
 
-export { app, auth, provider }; // 👈 Add `app` here again
+// Export for use in your app
+export { auth, provider };
+export default app;
